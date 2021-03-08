@@ -18,7 +18,7 @@ public class XlsView extends AbstractXlsxView {
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
+		workbook.createName();
 		Sheet sheet = workbook.createSheet("newsheet");
 		sheet.setFitToPage(true);
 		for (int i = 0; i < 10; i++)
@@ -27,7 +27,7 @@ public class XlsView extends AbstractXlsxView {
 		    				for (int j =0; j<10;j++)
 		    					{
 		    					Cell c = r.createCell(j);
-		    					c.setCellValue("column "+j);
+		    					c.setCellValue("column "+model.get("user")+j);
 		    					}
 					}
 				);
