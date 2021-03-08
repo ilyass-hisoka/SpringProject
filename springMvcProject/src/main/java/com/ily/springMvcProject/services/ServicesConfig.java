@@ -19,7 +19,7 @@ import org.springframework.core.io.Resource;
 
 
 @Configuration
-@ComponentScan(basePackages = {"com.ily.springMvcProject.services"})
+@ComponentScan(basePackages = {"com.ily.springMvcProject.services","com.ily.dao"})
 public class ServicesConfig implements ApplicationContextAware {
 
 	@Autowired
@@ -29,7 +29,8 @@ public class ServicesConfig implements ApplicationContextAware {
 	PropertySourcesPlaceholderConfigurer  getPlaceholder() {
 		PropertySourcesPlaceholderConfigurer p = new  PropertySourcesPlaceholderConfigurer();
 		Resource r = context.getResource("classpath:/config.properties");
-		p.setLocation(r);
+		Resource r1 = context.getResource("classpath:/connection.properties");
+		p.setLocations(r,r1);
 		return p;
 	}
 	
@@ -37,6 +38,7 @@ public class ServicesConfig implements ApplicationContextAware {
 	static ResourceBundleMessageSource  messageSource() {
 		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
 		rb.addBasenames("info");
+		
 		System.out.println(rb.getMessage("label_project_name", null, Locale.getDefault()));
 		return rb;
 	}

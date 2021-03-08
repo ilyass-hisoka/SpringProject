@@ -23,18 +23,19 @@ public class HomeController {
 
 	@Autowired
 	private TestServices testServices;
-	
-	
+	@Autowired
+	private UserService userServices;
 	
 	@RequestMapping(value="/")
 	public ModelAndView test(HttpServletResponse response) throws IOException{
 		System.out.println(testServices.getName());
 		System.out.println(testServices.getProjectName());
-		UserService user = new UserService();
-		user.setName("ilyass");
 		Map<String, String> map = new HashMap<String, String>();
+		for(int i=0; i < 4; i++)
+			userServices.ajouterUser("user"+i);
+		System.out.println(userServices.getUsers());
 		map.put("user", "user");
-		return new ModelAndView("xlsView",map);
+		return new ModelAndView("home");
 	}
 
 	

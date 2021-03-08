@@ -12,9 +12,6 @@ import org.springframework.web.servlet.view.XmlViewResolver;
 
 import com.ily.springMvcProject.services.ServicesConfig;
 
-
-
-
 public class DispatcherServletAnnotationConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -35,9 +32,6 @@ public class DispatcherServletAnnotationConfig extends AbstractAnnotationConfigD
 		String[] servletMappin = {"/"};
 		return servletMappin;
 	}
-	
-	
-
 }
 
 @Configuration
