@@ -19,7 +19,7 @@ import org.springframework.core.io.Resource;
 
 
 @Configuration
-
+@ComponentScan(basePackages = {"com.ily.springMvcProject.services"})
 public class ServicesConfig implements ApplicationContextAware {
 
 	@Autowired
